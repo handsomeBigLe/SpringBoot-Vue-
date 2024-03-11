@@ -7,3 +7,8 @@
 前端：Vue、Element-UI、HTML、CSS、JavaScript
 后端：Java、SpringBoot、Mybatis
 数据库：mysql
+
+关于
+===
+springboot_bingli文件夹内是后端原码
+vue.rar中是前端源码
