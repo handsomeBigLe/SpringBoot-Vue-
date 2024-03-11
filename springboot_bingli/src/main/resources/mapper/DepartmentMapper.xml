@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.DepartmentDao">
+
+    <select id="findBySearch" resultType="com.example.entity.Department">
+        select * from departmentinfo
+        <where>
+            <if test="user != null and user.name != null and user.name !=''">
+                and name like concat('%',#{user.name},'%')
+            </if>
+            <if test="user != null and user.id != null and user.id !=''">
+                and id like concat('%',#{user.id},'%')
+            </if>
+
+        </where>
+    </select>
+</mapper>

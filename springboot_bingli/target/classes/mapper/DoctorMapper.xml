@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.DoctorDao">
+
+    <select id="findBySearch" resultType="com.example.entity.Doctor">
+        select * from doctorinfo
+        <where>
+            <if test="user != null and user.name != null and user.name !=''">
+                and name like concat('%',#{user.name},'%')
+            </if>
+            <if test="user != null and user.id != null and user.id !=''">
+                and id like concat('%',#{user.id},'%')
+            </if>
+            <if test="user != null and user.department != null and user.department !=''">
+                and department like concat('%',#{user.department},'%')
+            </if>
+        </where>
+    </select>
+    <select id="getConsultationNum" resultType="java.lang.Integer">
+        select sum(id) from recordinfo where doctor like #{name}
+    </select>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.dao.RecordDao">
+
+    <select id="findBySearch" resultType="com.example.entity.Record">
+        select * from recordinfo
+        <where>
+            <if test="user != null and user.patient != null and user.patient !=''">
+                and patient like concat('%',#{user.patient},'%')
+            </if>
+            <if test="user != null and user.doctor != null and user.doctor !=''">
+                and doctor like concat('%',#{user.doctor},'%')
+            </if>
+            <if test="user != null and user.department != null and user.department !=''">
+                and department like concat('%',#{user.department},'%')
+            </if>
+        </where>
+    </select>
+
+</mapper>
